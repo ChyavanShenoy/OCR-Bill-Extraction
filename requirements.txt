@@ -1,0 +1,6 @@
+pydantic
+fastapi
+python-doctr[torch]
+matplotlib
+pillow
+requests
