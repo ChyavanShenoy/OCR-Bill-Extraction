@@ -1,6 +1,10 @@
-pydantic
-fastapi
-python-doctr[torch]
-matplotlib
-pillow
-requests
+numpy
+pandas
+pydantic>=1.6.1
+starlette>=0.13.2
+fastapi>=0.63.0
+python-doctr[torch]>=0.6.0
+matplotlib>=3.3.4
+pillow>=8.3.1
+requests>=2.26.0
+uvicorn>=0.13.4
