@@ -20,10 +20,11 @@ app.add_middleware(
 
 
 class ImgLoc(BaseModel):
-    image_data: str = Field(description="Path to the image")
+    # image_data: str = Field(description="Path to the image")
+    image_data: str
 
-    def __getitem__(self, item):
-        return getattr(self, item)
+    # def __getitem__(self, item):
+    #     return getattr(self, item)
 
 
 # on startup event delet files inside temp_files folder
