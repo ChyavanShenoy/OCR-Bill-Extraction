@@ -1,9 +1,11 @@
+from http import client
 from os import environ
-from pydantic import BaseModel, Field
+# from pydantic import BaseModel, Field
 from fastapi import FastAPI, Body
 import utils.fileops as fileops
 import prediction_machine as pm
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.testclient import TestClient
 
 app = FastAPI()
 
@@ -15,15 +17,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# class ImgLoc(BaseModel):
-#     image_data: str = Field(description="Base64 encoded image")
-
-#     # def __getitem__(self, item):
-#     #     return getattr(self, item)
-
-
 # on startup event delet files inside temp_files folder
+
+
 @app.on_event("startup")
 async def startup_event():
     fileops.delete_files()
@@ -53,7 +49,10 @@ def detect_bill(image_data: str = Body(..., embed=True)):
 def main():
     import uvicorn
     # use uvicorn to run the app at env:8000
-    uvicorn.run(app, host="localhost", port=environ.get("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # use uvicorn to run the app at environment port
+    # port=environ.get("PORT", 8080)
+    # print("port: ", port)
 
 
 if __name__ == "__main__":
